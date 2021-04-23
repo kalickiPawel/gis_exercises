@@ -153,5 +153,7 @@ Thumbs.db
 # Pycharm
 .idea
 
+# Output data folder
+data
 
 # End of https://www.toptal.com/developers/gitignore/api/python
