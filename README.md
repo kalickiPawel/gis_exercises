@@ -1,0 +1,1 @@
+# Geoinformatics personal training repo
