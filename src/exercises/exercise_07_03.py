@@ -6,7 +6,7 @@ def run(export_folder):
 
     box = '299000,446000,299100,446100'
     filename = 'zad03'
-    num_of_tiles = 8
+    num_of_tiles = 4
     tile = 200
 
     wms = get_data('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution', 0, '1.3.0')

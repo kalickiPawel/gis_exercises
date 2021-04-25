@@ -16,9 +16,9 @@ def run(export_folder):
     wfs = get_data(url, 1, v)
     _, ds_name = get_layer(wfs, layer)
 
-    drawienski = PropertyIsEqualTo(propertyname='kodinspire', literal='PL.ZIPOP.1393.PN.18')
-    wolinski = PropertyIsEqualTo(propertyname='kodinspire', literal='PL.ZIPOP.1393.PN.4')
-    xml = etree.tostring(Or([drawienski, wolinski]).toXML()).decode("utf-8")
+    drawa = PropertyIsEqualTo(propertyname='kodinspire', literal='PL.ZIPOP.1393.PN.18')
+    wolin = PropertyIsEqualTo(propertyname='kodinspire', literal='PL.ZIPOP.1393.PN.4')
+    xml = etree.tostring(Or([drawa, wolin]).toXML()).decode("utf-8")
 
     data = str(wfs.getfeature(typename=layer, filter=xml).read(), 'utf-8')
 
