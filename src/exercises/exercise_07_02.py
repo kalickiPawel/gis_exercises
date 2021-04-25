@@ -1,4 +1,4 @@
-from src.get_from_wms_or_wfs import get_data, get_map, get_center_tile
+from src.get_from_wms_or_wfs import get_data, get_map, get_center_tile, get_layer
 
 
 def run(export_folder):
@@ -14,6 +14,7 @@ def run(export_folder):
 
     raster_ext = "png"
     raster = {
+        'name': 'zad02',
         'size': (500, 500),
         'format': "image/" + raster_ext,
         'extension': raster_ext
