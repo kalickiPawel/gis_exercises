@@ -53,7 +53,7 @@ def get_map(wms, layer, raster, bbox, export_folder, styles='default', srs='EPSG
         format=raster['format']
     )
 
-    out = open(os.path.join(export_folder, 'resp_map.' + raster['extension']), 'wb')
+    out = open(os.path.join(export_folder, raster['name'] + '.' + raster['extension']), 'wb')
     out.write(resp.read())
     out.close()
 
@@ -72,7 +72,7 @@ def get_center_tile(wms, layer, raster, bbox, export_folder, styles='default', s
         xy=tuple([x/2 for x in raster['size']])
     )
 
-    out = open(os.path.join(export_folder, 'resp_gfi.html'), 'wb')
+    out = open(os.path.join(export_folder, raster['name'] + '.html'), 'wb')
     out.write(resp.read())
     out.close()
 
