@@ -40,3 +40,40 @@ def get_layer(service, layer):
     print(f"Dataset name: {service[layer].title}")
     print(f"CRS: {service[layer].crsOptions}")
     return service[layer], service[layer].title.replace(" ", "_").lower()
+
+
+def get_map(wms, layer, raster, bbox, export_folder, styles='default', srs='EPSG:2180'):
+
+    resp = wms.getmap(
+        layers=[layer],
+        styles=[styles],
+        srs=srs,
+        bbox=np.fromstring(bbox, dtype=float, sep=','),
+        size=raster['size'],
+        format=raster['format']
+    )
+
+    out = open(os.path.join(export_folder, 'resp_map.' + raster['extension']), 'wb')
+    out.write(resp.read())
+    out.close()
+
+    return resp
+
+
+def get_center_tile(wms, layer, raster, bbox, export_folder, styles='default', srs='EPSG:2180'):
+    resp = wms.getfeatureinfo(
+        layers=[layer],
+        styles=[styles],
+        srs=srs,
+        bbox=np.fromstring(bbox, dtype=float, sep=','),
+        size=raster['size'],
+        format=raster['format'],
+        query_layers=[layer],
+        xy=tuple([x/2 for x in raster['size']])
+    )
+
+    out = open(os.path.join(export_folder, 'resp_gfi.html'), 'wb')
+    out.write(resp.read())
+    out.close()
+
+    return resp
